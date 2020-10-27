@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Scripts/Cane.gd" type="Script" id=1]
+[ext_resource path="res://assets/cano.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 19.4299, 10.8993 )
+
+[node name="Cane" type="Node2D"]
+
+z/z = 1
+script/script = ExtResource( 1 )
+vel = -150
+
+[node name="Up" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -1225 )
+transform/scale = Vector2( 3, 8 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="Down" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 1225 )
+transform/scale = Vector2( 3, 8 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 5.91468, 0, 0, 91.5399, -1.31375, 1212.39 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 1 )
+shapes/1/transform = Matrix32( 5.91468, 0, 0, 91.5399, -1.31375, -1210.85 )
+shapes/1/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( -1.31375, 1212.39 )
+transform/scale = Vector2( 5.91468, 91.5399 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( -1.31375, -1210.85 )
+transform/scale = Vector2( 5.91468, 91.5399 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 1
+
+
